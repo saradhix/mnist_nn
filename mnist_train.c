@@ -32,12 +32,12 @@ int FANN_API test_callback(struct fann *ann, struct fann_train_data *train,
 int main()
 {
 	fann_type *calc_out;
-	const unsigned int num_input = 140;
+	const unsigned int num_input = 50;
 	const unsigned int num_output = 10;
 	const unsigned int num_layers = 3;
-	const unsigned int num_neurons_hidden = 150;
+	const unsigned int num_neurons_hidden = 100;
 	const float desired_error = (const float) 0;
-	const unsigned int max_epochs = 100;
+	const unsigned int max_epochs = 300;
 	const unsigned int epochs_between_reports = 1;
 	struct fann *ann;
 	struct fann_train_data *data;
@@ -66,7 +66,7 @@ int main()
 	printf("Training network.\n");
 	fann_train_on_data(ann, data, max_epochs, epochs_between_reports, desired_error);
 
-	printf("Testing network. %f\n", fann_test_data(ann, data));
+/*	printf("Testing network. %f\n", fann_test_data(ann, data));
 
 	for(i = 0; i < fann_length_train_data(data); i++)
 	{
@@ -75,7 +75,7 @@ int main()
 			   data->input[i][0], data->input[i][1], calc_out[0], data->output[i][0],
 			   fann_abs(calc_out[0] - data->output[i][0]));
 	}
-
+*/
 	printf("Saving network.\n");
 
 	fann_save(ann, "mnist_float.net");

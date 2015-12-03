@@ -10,7 +10,7 @@ mnist = fetch_mldata("MNIST Original")
 X_train, y_train = mnist.data / 255., mnist.target
 #print X_train.shape
 
-pca = PCA(n_components=140)
+pca = PCA(n_components=50)
 X_transformed = pca.fit_transform(X_train)
 
 #create the y_vector
